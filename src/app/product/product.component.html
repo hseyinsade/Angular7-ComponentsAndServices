@@ -1,0 +1,34 @@
+<h3 *ngIf="products; else noUrun">{{ title }}</h3>
+<div class="form-group">
+  <input
+    class="form-control"
+    id="urunName"
+    placeholder="Ne Arıyorsun"
+    [(ngModel)]="filterText"
+  />
+  <small *ngIf="filterText" class="form-text text-muted">
+    Şu anda <strong>{{ filterText }}</strong> kelimesini arıyorsun.
+  </small>
+</div>
+
+<div class="row">
+  <ng-template #noUrun>
+    <div class="alert alert-danger">
+      Bu alanda urun yok knkaaa
+    </div>
+  </ng-template>
+  <div
+    *ngFor="let urun of products | urunFilter: filterText"
+    class="card"
+    style="width: 18rem;"
+  >
+    <img class="card-img-top" [src]="urun.imageUrl" alt="Card image cap" />
+    <div class="card-body">
+      <h5 class="card-title">{{ urun.name }} {{ urun.price | currency }}</h5>
+      <p class="card-text">
+        {{ urun.description }}
+      </p>
+      <a (click)= "addToCart(urun)" class="btn btn-primary">Sepete Ekle</a>
+    </div>
+  </div>
+</div>

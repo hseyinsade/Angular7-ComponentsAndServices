@@ -1,0 +1,16 @@
+<h3 *ngIf="categories; else noKategori">{{ title }}</h3>
+
+
+  <ng-template #noKategori>
+    <div class="alert alert-danger">
+      Bu alanda kategori yok knkaaa
+    </div>
+  </ng-template>
+  <a class="list-group-item active">Tüm Ürünler</a>
+  <div class="list-group" *ngFor="let kategori of categories">
+ 
+        <a class="list-group-item ">{{ kategori.name }}</a> 
+  
+    
+  </div>
+
